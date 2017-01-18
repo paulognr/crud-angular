@@ -3,6 +3,7 @@
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.css">
+<link rel="stylesheet" href="assets/components/md-data-table/md-data-table.min.css">
 <link rel="stylesheet" href="assets/css/app.css">
 <title>Crud Angular</title>
 </head>
@@ -10,12 +11,45 @@
 	<header>
 		<a class="logo" href="#"></a>
 	</header>
+	
+	<md-content layout="column" class="content" ng-controller="carController">
+		<md-table-container>
+		  <table md-table md-row-select multiple ng-model="selected">
+			<thead md-head>
+			  <tr md-row>
+				<th md-column>Placa</th>
+				<th md-column>Modelo</th>
+				<th md-column>Marca</th>
+				<th md-column>Foto</th>
+				<th md-column>Combustível</th>
+				<th md-column md-numeric>Valor</th>
+			  </tr>
+			</thead>
+			<tbody md-body>
+			  <tr md-row md-select="car" md-select-id="placa" md-auto-select ng-repeat="car in cars">
+				<td md-cell>{{car.placa}}</td>
+				<td md-cell>{{car.modelo}}</td>
+				<td md-cell>{{car.marca}}</td>
+				<td md-cell>
+					<a ng-show="{{car.imagem}}" href="{{car.imagem}}" target="_blank">Imagem</a>
+					<span ng-show="{{!car.imagem}}">Sem foto</span>
+				</td>
+				<td md-cell>{{car.combustivel}}</td>
+				<td md-cell>{{car.valor | number:2}}</td>
+			  </tr>
+			</tbody>
+		  </table>
+		</md-table-container>
+	</md-content>
 
 	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js"></script>
 	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-animate.min.js"></script>
 	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-aria.min.js"></script>
-	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-messages.min.js"></script>
 	<script src="http://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.js"></script>
+	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-messages.min.js"></script>
+	<!--<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-route.js"></script>-->
+	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-resource.js"></script>
+	<script src="assets/components/md-data-table/md-data-table.min.js"></script>
 	<script src="assets/js/app.js"></script>
 </body>
 </html>
