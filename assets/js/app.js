@@ -10,13 +10,13 @@
 
 	var app = angular.module('crud', ['md.data.table', 'ngMaterial', 'ngResource']);
 	
-	app.filter('decimal2comma', [
+	app.filter('comma2decimal', [
 		function() {
 			return function(input, size) {
-				var ret = (input) ? input.toString().replace(".",",") : null;
+				var ret = (input) ? input.toString().replace(",",".") : null;
 				
-				if(ret.lastIndexOf(",") == ret.length - (size + 1)){
-					ret = ret.replaceAt(ret.length - (size + 1), ".");
+				if(ret.lastIndexOf(".") == ret.length - (size + 1)){
+					ret = ret.replaceAt(ret.length - (size + 1), ",");
 				}
 				
 				return ret;

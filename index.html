@@ -3,6 +3,7 @@
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.css">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 <link rel="stylesheet" href="assets/components/md-data-table/md-data-table.min.css">
 <link rel="stylesheet" href="assets/css/app.css">
 <title>Crud Angular</title>
@@ -12,7 +13,20 @@
 		<a class="logo" href="#"></a>
 	</header>
 	
-	<md-content layout="column" class="content" ng-controller="carController" style="margin-top:60px;">
+	<md-content layout="column" class="content" ng-controller="carController" >
+		
+		<div layout="row" layout-wrap class="my-actions">
+			<div flex="30">
+				<md-button class="md-raised md-primary my-button">Novo Carro</md-button>
+			</div>
+			<div flex="30" flex-offset="40" class="fix-align-right">
+				<input type="text" placeholder="Pesquisar" class="search" />
+				<md-button class="md-raised">
+					<md-icon class="material-icons">search</md-icon>
+				</md-button>
+			</div>
+		</div>
+	
 		<md-table-container>
 		  <table md-table md-row-select multiple ng-model="selected" class="my-table">
 			<thead md-head>
@@ -35,7 +49,7 @@
 					<span ng-show="{{car.imagem == null}}">Sem foto</span>
 				</td>
 				<td md-cell>{{car.combustivel}}</td>
-				<td md-cell>{{car.valor | number:2 |decimal2comma:2}}</td>
+				<td md-cell>{{car.valor | number:2 |comma2decimal:2}}</td>
 			  </tr>
 			</tbody>
 		  </table>
