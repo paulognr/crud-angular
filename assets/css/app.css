@@ -25,3 +25,30 @@ header {
 	max-width: 900px;
 	margin: auto;
 }
+
+table.my-table {
+	border: 1px solid;
+	border-color: #CED7E0;
+	border-top-left-radius: 4px;
+	border-top-right-radius: 4px;
+}
+
+table.my-table td.md-cell {
+	color: #617C96;
+}
+
+table.my-table th.md-column {
+    color: #617C96;
+}
+
+table.my-table thead th {
+	background-color: #F8FAFC;
+}
+
+table.my-table tbody tr {
+	background-color: #FFFFFF;
+}
+
+table.my-table.md-row-select tbody.md-body>tr.md-row:not([disabled]):hover {
+    background-color: #D8E9FB!important;
+}

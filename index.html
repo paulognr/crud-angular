@@ -12,9 +12,9 @@
 		<a class="logo" href="#"></a>
 	</header>
 	
-	<md-content layout="column" class="content" ng-controller="carController">
+	<md-content layout="column" class="content" ng-controller="carController" style="margin-top:60px;">
 		<md-table-container>
-		  <table md-table md-row-select multiple ng-model="selected">
+		  <table md-table md-row-select multiple ng-model="selected" class="my-table">
 			<thead md-head>
 			  <tr md-row>
 				<th md-column>Placa</th>
@@ -27,15 +27,15 @@
 			</thead>
 			<tbody md-body>
 			  <tr md-row md-select="car" md-select-id="placa" md-auto-select ng-repeat="car in cars">
-				<td md-cell>{{car.placa}}</td>
+				<td md-cell>{{car.placa | licenseCar}}</td>
 				<td md-cell>{{car.modelo}}</td>
 				<td md-cell>{{car.marca}}</td>
 				<td md-cell>
-					<a ng-show="{{car.imagem}}" href="{{car.imagem}}" target="_blank">Imagem</a>
-					<span ng-show="{{!car.imagem}}">Sem foto</span>
+					<a ng-show="{{car.imagem != null}}" href="{{car.imagem}}" target="_blank">Imagem</a>
+					<span ng-show="{{car.imagem == null}}">Sem foto</span>
 				</td>
 				<td md-cell>{{car.combustivel}}</td>
-				<td md-cell>{{car.valor | number:2}}</td>
+				<td md-cell>{{car.valor | number:2 |decimal2comma:2}}</td>
 			  </tr>
 			</tbody>
 		  </table>
