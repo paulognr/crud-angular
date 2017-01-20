@@ -4,9 +4,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.css">
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-<link rel="stylesheet" href="assets/components/md-data-table/md-data-table.min.css">
+<link rel="stylesheet" href="app/components/md-data-table/md-data-table.min.css">
 <link rel="stylesheet" href="assets/css/app.css">
-<link rel="stylesheet" href="assets/directives/my-search/my-search.css">
+<link rel="stylesheet" href="app/directives/my-search/my-search.directive.css">
 <title>Crud Angular</title>
 </head>
 <body ng-app="crud" ng-cloak>
@@ -54,14 +54,27 @@
 		</md-table-container>
 	</md-content>
 
+	<!-- Angular -->
 	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js"></script>
 	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-animate.min.js"></script>
 	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-aria.min.js"></script>
 	<script src="http://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.js"></script>
 	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-messages.min.js"></script>
-	<!--<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-route.js"></script>-->
+	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-route.js"></script>
 	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-resource.js"></script>
-	<script src="assets/components/md-data-table/md-data-table.min.js"></script>
-	<script src="assets/js/app.js"></script>
+	
+	<!-- External components -->
+	<script src="app/components/md-data-table/md-data-table.min.js"></script>
+	
+	<!-- App core -->
+	<script src="app/core/plus-prototype.js"></script>
+	<script src="app/core/app.js"></script>
+
+	<!-- App filters -->
+	<script src="app/filters/comma2decimal.filter.js"></script>
+	<script src="app/filters/licenseCar.filter.js"></script>
+
+	<!-- App directives -->
+	<script src="app/directives/my-search/my-search.directive.js"></script>
 </body>
 </html>
