@@ -36,6 +36,13 @@
 				return ret;
 			};
 		}]);
+		
+	app.directive('mySearch', function() {
+	  return {
+		restrict: 'E',
+		templateUrl: 'assets/directives/my-search/my-search.html'
+	  };
+	});
 	
 	app.controller('carController', ['$scope', function ($scope) {
 	  'use strict';

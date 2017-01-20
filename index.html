@@ -6,6 +6,7 @@
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 <link rel="stylesheet" href="assets/components/md-data-table/md-data-table.min.css">
 <link rel="stylesheet" href="assets/css/app.css">
+<link rel="stylesheet" href="assets/directives/my-search/my-search.css">
 <title>Crud Angular</title>
 </head>
 <body ng-app="crud" ng-cloak>
@@ -20,10 +21,7 @@
 				<md-button class="md-raised md-primary my-button">Novo Carro</md-button>
 			</div>
 			<div flex="30" flex-offset="40" class="fix-align-right">
-				<input type="text" placeholder="Pesquisar" class="search" />
-				<md-button class="md-raised">
-					<md-icon class="material-icons">search</md-icon>
-				</md-button>
+				<my-search></my-search>
 			</div>
 		</div>
 	
