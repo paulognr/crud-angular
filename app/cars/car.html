@@ -1,1 +1,70 @@
-<span>{{vm.current}}</span>
+<form name="carForm" ng-submit="vm.submit()">
+	<div layout-gt-sm="row">
+		<md-input-container class="md-block" flex-gt-sm>
+			<label>Placa</label>
+			<input type="text" required autofocus class="fix-text-uppercase" name="placa" ng-model="vm.current.placa" 
+				ui-mask="AAA-9999" ui-options="{addDefaultPlaceholder: false}" ng-minlength="8"/>
+
+			<div ng-messages="carForm.placa.$error">
+				<div ng-message="required">A placa é obrigatória.</div>
+			</div>
+		</md-input-container>
+
+		<div flex="5" hide-xs hide-sm>
+          <!-- Spacer //-->
+        </div>
+
+		<md-input-container class="md-block" flex-gt-sm>
+			<label>Modelo</label>
+			<input name="modelo" required ng-model="vm.current.modelo" />
+
+			<div ng-messages="carForm.modelo.$error">
+				<div ng-message="required">O modelo é obrigatório.</div>
+			</div>
+		</md-input-container>
+	</div>
+
+	<div layout-gt-sm="row">
+		<md-input-container class="md-block" flex-gt-sm>
+			<label>Marca</label>
+			<input name="marca" required ng-model="vm.current.marca" />
+
+			<div ng-messages="carForm.marca.$error">
+				<div ng-message="required">A marca é obrigatória.</div>
+			</div>
+		</md-input-container>
+
+		<div flex="5" hide-xs hide-sm>
+          <!-- Spacer //-->
+        </div>
+
+        <md-input-container class="md-block" flex-gt-sm>
+			<label>Foto</label>
+			<input name="foto" ng-model="vm.current.foto" />
+		</md-input-container>
+	</div>
+
+	<div layout-gt-sm="row">
+		<md-input-container class="md-block" flex-gt-sm>
+			<label>Combustível</label>
+			<input name="combustivel" ng-model="vm.current.combustivel" />
+		</md-input-container>
+
+		<div flex="5" hide-xs hide-sm>
+          <!-- Spacer //-->
+        </div>
+
+        <md-input-container class="md-block" flex-gt-sm>
+			<label>Valor</label>
+			<input name="valor" ng-model="vm.current.valor" />
+		</md-input-container>
+	</div>
+
+	<div layout="row" layout-wrap>
+		<div flex="100" class="fix-align-right">
+			<md-button class="md-raised md-primary my-button" type="submit">
+				Salvar
+			</md-button>
+		</div>
+	</div>
+</form>

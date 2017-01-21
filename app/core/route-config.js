@@ -22,9 +22,15 @@
 				controllerAs: 'vm'
 			})
 			.state('cars.detail', {
-				url: '/:license',
+				url: '/detail/:license',
 				templateUrl: 'app/cars/car.html',
 				controller: 'CarDetailController',
+				controllerAs: 'vm'
+			})
+			.state('cars.create', {
+				url: '/create',
+				templateUrl: 'app/cars/car.html',
+				controller: 'CarCreateController',
 				controllerAs: 'vm'
 			});
 	}	

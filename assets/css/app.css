@@ -29,6 +29,10 @@ input.search::before{
 	text-align: right;
 }
 
+.fix-text-uppercase{
+	text-transform: uppercase;
+}
+
 .logo {
     background: url(../images/logo.png) center no-repeat;
     background-size: contain;
@@ -44,9 +48,10 @@ input.search::before{
 	margin: auto;
 }
 
-.my-actions {
+.my-ui-view {
 	padding: 20px 0;
     background-color: #F1F4F9;
+    overflow-x: hidden;
 }
 
 button.my-button {
@@ -115,7 +120,6 @@ table.my-table md-checkbox.md-checked .md-icon:after {
 table.my-table md-checkbox.md-checked .md-icon {
     border-color: #A5D3F6;
 }
-
 
 table.my-table td.md-cell>a {
     color: #4A9BEC;

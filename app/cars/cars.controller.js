@@ -5,9 +5,10 @@
 		.module('crud')
 		.controller('CarParentController', carParentController)
 		.controller('CarListController', carListController)
-		.controller('CarDetailController', carDetailController);
+		.controller('CarDetailController', carDetailController)
+		.controller('CarCreateController', carCreateController);
 
-	function carParentController() {
+	function carParentController($scope) {
 		var vm = this;
 	  
 	  	vm.cars = [ 
@@ -34,31 +35,30 @@
 		  		"valor" : "20000"
 		  	}];
 
-		vm.getCars = getCars;
-
-		function getCars() {
-			return vm.cars;
-		}
+		$scope.cars = vm.cars;
 	}
 
-	function carListController() {
+	function carListController($scope, $state) {
 		var vm = this;
 
-		carParentController.apply(vm, arguments)
-
 		vm.selected = [];
+		vm.cars = $scope.cars;
 
 		vm.query = {
 			order: 'placa',
 			limit: 5,
 			page: 1
 		};
+
+		vm.navigateToCreateCar = navigateToCreateCar;
+
+		function navigateToCreateCar() {
+			$state.go('cars.create');
+		}
 	}
 
 	function carDetailController($stateParams, $state) {
 		var vm = this;
-
-		carParentController.apply(vm, arguments)
 
 		vm.current;
 		vm.findByLicense = findByLicense;
@@ -82,6 +82,22 @@
 					return currentCar;
 				}
 			}
+		}
+	}
+
+	function carCreateController($scope, $state) {
+		var vm = this;
+
+		vm.current == {
+			placa:""
+		};
+
+		vm.submit = submit;
+
+		function submit() {
+			vm.current.placa = vm.current.placa.toUpperCase();
+			$scope.cars.push(vm.current);
+			$state.go('cars.list');
 		}
 	}	
 	
