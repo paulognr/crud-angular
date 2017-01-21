@@ -14,44 +14,8 @@
 		<a class="logo" href="#"></a>
 	</header>
 	
-	<md-content layout="column" class="content" ng-controller="carController" >
-		
-		<div layout="row" layout-wrap class="my-actions">
-			<div flex="30">
-				<md-button class="md-raised md-primary my-button">Novo Carro</md-button>
-			</div>
-			<div flex="30" flex-offset="40" class="fix-align-right">
-				<my-search></my-search>
-			</div>
-		</div>
-	
-		<md-table-container>
-		  <table md-table md-row-select multiple ng-model="selected" class="my-table">
-			<thead md-head>
-			  <tr md-row>
-				<th md-column>Placa</th>
-				<th md-column>Modelo</th>
-				<th md-column>Marca</th>
-				<th md-column>Foto</th>
-				<th md-column>Combustível</th>
-				<th md-column md-numeric>Valor</th>
-			  </tr>
-			</thead>
-			<tbody md-body>
-			  <tr md-row md-select="car" md-select-id="placa" md-auto-select ng-repeat="car in cars">
-				<td md-cell>{{car.placa | licenseCar}}</td>
-				<td md-cell>{{car.modelo}}</td>
-				<td md-cell>{{car.marca}}</td>
-				<td md-cell>
-					<a ng-show="{{car.imagem != null}}" href="{{car.imagem}}" target="_blank">Imagem</a>
-					<span ng-show="{{car.imagem == null}}">Sem foto</span>
-				</td>
-				<td md-cell>{{car.combustivel}}</td>
-				<td md-cell>{{car.valor | number:2 |comma2decimal:2}}</td>
-			  </tr>
-			</tbody>
-		  </table>
-		</md-table-container>
+	<md-content layout="column" class="content">
+		<div ui-view></div>
 	</md-content>
 
 	<!-- Angular -->
@@ -60,7 +24,8 @@
 	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-aria.min.js"></script>
 	<script src="http://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.js"></script>
 	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-messages.min.js"></script>
-	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-route.js"></script>
+	<!--<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-route.js"></script>-->
+	<script src="//unpkg.com/angular-ui-router/release/angular-ui-router.min.js"></script>
 	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-resource.js"></script>
 	
 	<!-- External components -->
@@ -69,6 +34,7 @@
 	<!-- App core -->
 	<script src="app/core/plus-prototype.js"></script>
 	<script src="app/core/app.js"></script>
+	<script src="app/core/route-config.js"></script>
 
 	<!-- App filters -->
 	<script src="app/filters/comma2decimal.filter.js"></script>
@@ -76,5 +42,8 @@
 
 	<!-- App directives -->
 	<script src="app/directives/my-search/my-search.directive.js"></script>
+
+	<!-- Module car -->
+	<script src="app/cars/cars.controller.js"></script>	
 </body>
 </html>
