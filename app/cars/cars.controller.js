@@ -35,7 +35,46 @@
 		  		"valor" : "20000"
 		  	}];
 
+		vm.cars.push({
+		  		"combustivel" : "Flex", 
+		  		"imagem" : null, 
+		  		"marca" : "Pegeout", 
+		  		"modelo" : "208", 
+		  		"placa" : "AAA-1111", 
+		  		"valor" : "20000" 
+		  	});
+
+		vm.cars.push({
+		  		"combustivel" : "Gasolina", 
+		  		"imagem" : null, 
+		  		"marca" : "Pegeout", 
+		  		"modelo" : "207", 
+		  		"placa" : "BBB-2222", 
+		  		"valor" : "20000" 
+		  	});
+
+		vm.cars.push({
+		  		"combustivel" : "Alcool", 
+		  		"imagem" : null, 
+		  		"marca" : "Honda", 
+		  		"modelo" : "Civic", 
+		  		"placa" : "CCC-3333", 
+		  		"valor" : "20000" 
+		  	});
+
+		vm.cars.push({
+		  		"combustivel" : "Flex", 
+		  		"imagem" : null, 
+		  		"marca" : "Ferrari", 
+		  		"modelo" : "F40", 
+		  		"placa" : "DDD-4444", 
+		  		"valor" : "200000" 
+		  	});
+
+		vm.combustiveis = ["Gasolina", "Alcool", "Flex"];
+
 		$scope.cars = vm.cars;
+		$scope.combustiveis = vm.combustiveis;
 	}
 
 	function carListController($scope, $state) {
@@ -53,6 +92,8 @@
 
 		vm.navigateToCreateCar = navigateToCreateCar;
 		vm.findCars = findCars;
+		vm.remove = remove;
+		vm.update = update;
 
 		activate();
 
@@ -93,13 +134,42 @@
 				findCars();
 			})
 		}
+
+		function remove() {
+			if(vm.selected.length > 0){
+				for(var j = 0; j < vm.selected.length; j++){
+					var selected = vm.selected[j];
+					if(selected){
+						for(var i in $scope.cars){
+							if(selected.placa == $scope.cars[i].placa){
+								$scope.cars.removeAt(i);
+								break;
+							}
+						}	
+					}
+				}
+
+				vm.selected = [];
+				findCars();
+			}
+		}
+
+		function update() {
+			if(vm.selected[0]){
+				$state.go('cars.detail', {license: vm.selected[0].placa});
+			}
+		}
 	}
 
-	function carDetailController($stateParams, $state) {
+	function carDetailController($stateParams, $state, $scope) {
 		var vm = this;
 
 		vm.current;
 		vm.findByLicense = findByLicense;
+		vm.cancel = cancel;
+		vm.submit = submit;
+		vm.cars = $scope.cars;
+		vm.combustiveis = $scope.combustiveis;
 
 		activate();
 
@@ -121,6 +191,23 @@
 				}
 			}
 		}
+
+		function cancel(){
+			$state.go('cars.list');
+		}
+
+		function submit() {
+			vm.current.placa = vm.current.placa.toUpperCase();
+
+			for(var i in $scope.cars){
+				if(vm.current.placa == $scope.cars[i].placa){
+					$scope.cars[i] = vm.current;
+					break;
+				}
+			}
+
+			$state.go('cars.list');
+		}
 	}
 
 	function carCreateController($scope, $state) {
@@ -129,6 +216,8 @@
 		vm.current == {
 			placa:""
 		};
+
+		vm.combustiveis = $scope.combustiveis;
 
 		vm.submit = submit;
 

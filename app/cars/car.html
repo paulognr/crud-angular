@@ -45,10 +45,15 @@
 	</div>
 
 	<div layout-gt-sm="row">
-		<md-input-container class="md-block" flex-gt-sm>
+		<md-select-container class="md-block" flex-gt-sm>
 			<label>Combustível</label>
-			<input name="combustivel" ng-model="vm.current.combustivel" />
-		</md-input-container>
+			<select name="combustivel" ng-model="vm.current.combustivel" 
+				ng-init="vm.current.combustivel ? vm.current.combustivel : vm.current.combustivel = vm.combustiveis[0]">
+				<option value="Gasolina">Gasolina</option>
+				<option value="Alcool">Alcool</option>
+				<option value="Flex">Flex</option>
+			</select>
+		</md-select-container>
 
 		<div flex="5" hide-xs hide-sm>
           <!-- Spacer //-->
@@ -64,6 +69,9 @@
 		<div flex="100" class="fix-align-right">
 			<md-button class="md-raised md-primary my-button" type="submit">
 				Salvar
+			</md-button>
+			<md-button class="md-raised my-button" ng-click="vm.cancel()">
+				Voltar
 			</md-button>
 		</div>
 	</div>

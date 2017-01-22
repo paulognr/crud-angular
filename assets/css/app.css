@@ -59,10 +59,13 @@ input.search::before{
 }
 
 button.my-button {
-	background-color: #4ABA58 !important;
 	text-transform: none;
 	padding: 0 25px;
     margin: 0
+}
+
+button.my-button.md-primary {
+	background-color: #4ABA58 !important;
 }
 
 table.my-table {

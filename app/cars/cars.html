@@ -1,10 +1,20 @@
 <div layout="row" layout-wrap class="my-actions">
-	<div flex="30">
+	<div flex="20">
 		<md-button class="md-raised md-primary my-button" ng-click="vm.navigateToCreateCar()">
 			Novo Carro
 		</md-button>
 	</div>
-	<div flex="30" flex-offset="40" class="fix-align-right">
+
+	<div flex="50">
+		<md-button class="md-raised my-button" ng-disabled="vm.selected.length != 1" ng-click="vm.update()">
+			Editar
+		</md-button>
+
+		<md-button class="md-raised my-button" ng-disabled="vm.selected.length == 0" ng-click="vm.remove()">
+			Excluir
+		</md-button>
+	</div>
+	<div flex="30" class="fix-align-right">
 		<my-search></my-search>
 	</div>
 </div>
