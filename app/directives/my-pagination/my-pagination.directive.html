@@ -1,0 +1,12 @@
+<div class="my-pagination" ng-show="vm.totalPages > 1">
+	<div class="item previous-page" ng-click="vm.previousClick()">
+		<div><<</div>
+	</div>
+	<div class="item page" data-index="{{page.index}}" ng-click="vm.itemClick($event, elem)" 
+		ng-class="page.index == vm.currentPage ? 'selected' : ''" ng-repeat="page in vm.pages">
+		<div data-index="{{page.index}}">{{page.index}}</div>
+	</div>
+	<div class="item next-page" ng-click="vm.nextClick()">
+		<div>>></div>
+	</div>
+</div>

@@ -82,6 +82,7 @@
 
 		vm.selected = [];
 		vm.cars = $scope.cars;
+		vm.totalPages = 0;
 
 		vm.query = {
 			text: '',
@@ -121,6 +122,8 @@
 				return (a[vm.query.order] > b[vm.query.order]) ? 1 : ((b[vm.query.order] > a[vm.query.order]) ? -1 : 0);
 			}); 
 
+			vm.totalPages = Math.ceil(result.length / vm.query.limit);
+
 			return result.subarray(start, end);
 		}
 
@@ -131,6 +134,11 @@
 		function bindSearch() {
 			$scope.$on('search-event', function(event, data){
 				vm.query.text = data.text;
+				findCars();
+			});
+
+			$scope.$on('pagination-event', function(event, data){
+				vm.query.page = data.page;
 				findCars();
 			})
 		}
@@ -217,6 +225,7 @@
 			placa:""
 		};
 
+		vm.cancel = cancel;
 		vm.combustiveis = $scope.combustiveis;
 
 		vm.submit = submit;
@@ -224,6 +233,10 @@
 		function submit() {
 			vm.current.placa = vm.current.placa.toUpperCase();
 			$scope.cars.push(vm.current);
+			$state.go('cars.list');
+		}
+
+		function cancel(){
 			$state.go('cars.list');
 		}
 	}	
