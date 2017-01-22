@@ -1,4 +1,4 @@
-<div layout="row" layout-wrap>
+<div layout="row" layout-wrap class="my-actions">
 	<div flex="30">
 		<md-button class="md-raised md-primary my-button" ng-click="vm.navigateToCreateCar()">
 			Novo Carro
@@ -22,7 +22,7 @@
 	  </tr>
 	</thead>
 	<tbody md-body>
-	  <tr md-row md-select="car" md-select-id="placa" md-auto-select ng-repeat="car in vm.cars">
+	  <tr md-row md-select="car" md-select-id="placa" md-auto-select ng-repeat="car in vm.findCars()">
 		<td md-cell>{{car.placa | licenseCar}}</td>
 		<td md-cell>{{car.modelo}}</td>
 		<td md-cell>{{car.marca}}</td>

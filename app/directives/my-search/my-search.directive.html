@@ -1,6 +1,6 @@
 <div class="my-search">
-	<input type="text" placeholder="Pesquisar" class="search" />
-	<md-button class="md-raised">
+	<input type="text" placeholder="Pesquisar" class="search" ng-model="vm.text" ng-keyup="vm.search()" />
+	<md-button class="md-raised" ng-click="vm.search()" >
 		<md-icon class="material-icons">search</md-icon>
 	</md-button>
 </div>

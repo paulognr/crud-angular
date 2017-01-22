@@ -45,15 +45,53 @@
 		vm.cars = $scope.cars;
 
 		vm.query = {
+			text: '',
 			order: 'placa',
 			limit: 5,
 			page: 1
 		};
 
 		vm.navigateToCreateCar = navigateToCreateCar;
+		vm.findCars = findCars;
+
+		activate();
+
+		function activate() {
+			bindSearch();
+		}
+
+		function findCars() {
+			var start = (vm.query.page - 1) * vm.query.limit,
+				end = start + vm.query.limit,
+				result = [];
+
+			if(vm.query.text.trim().length > 0){
+				result = vm.cars.filter(function(car){
+					if(car.combustivel.toLowerCase().indexOf(vm.query.text.toLowerCase()) > -1 
+							|| car.marca.toLowerCase().indexOf(vm.query.text.toLowerCase()) > -1){
+						return car;
+					}
+				});
+			} else {
+				result = vm.cars;
+			}
+
+			result.sort(function(a,b) {
+				return (a[vm.query.order] > b[vm.query.order]) ? 1 : ((b[vm.query.order] > a[vm.query.order]) ? -1 : 0);
+			}); 
+
+			return result.subarray(start, end);
+		}
 
 		function navigateToCreateCar() {
 			$state.go('cars.create');
+		}
+
+		function bindSearch() {
+			$scope.$on('search-event', function(event, data){
+				vm.query.text = data.text;
+				findCars();
+			})
 		}
 	}
 
