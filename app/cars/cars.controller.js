@@ -98,6 +98,7 @@
 		function bindSearch() {
 			$scope.$on('search-event', function(event, data){
 				vm.query.text = data.text;
+				vm.query.page = 1;
 				findCars();
 			});
 
